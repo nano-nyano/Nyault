@@ -420,7 +420,7 @@ export class SendComponent implements OnInit {
       default:
       case 'nano': return this.util.nano.nanoToRaw(value);
       case 'knano': return this.util.nano.knanoToRaw(value);
-      case 'mnano': return this.util.nano.mnanoToRaw(value);
+      case 'nyano': return this.util.nano.mnanoToRaw(value);
     }
   }
 
@@ -429,7 +429,7 @@ export class SendComponent implements OnInit {
       default:
       case 'nano': return this.util.nano.rawToNano(value);
       case 'knano': return this.util.nano.rawToKnano(value);
-      case 'mnano': return this.util.nano.rawToMnano(value);
+      case 'nyano': return this.util.nano.rawToMnano(value);
     }
   }
 

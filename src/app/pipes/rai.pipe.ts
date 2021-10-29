@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RaiPipe implements PipeTransform {
   precision = 6;
 
-  mrai = 1000000000000000000000000000000;
-  krai = 1000000000000000000000000000;
-  rai  = 1000000000000000000000000;
+  mrai = 1000000000000000000000;
+  krai = 1000000000000000000;
+  rai  = 1000000000000000;
 
   transform(value: any, args?: any): any {
     const opts = args.split(',');
@@ -18,7 +18,7 @@ export class RaiPipe implements PipeTransform {
     switch (denomination.toLowerCase()) {
       default:
       case 'xrb': return `${(value / this.mrai).toFixed(6)}${!hideText ? ' NYANO' : ''}`;
-      case 'mnano':
+      case 'nyano':
         const hasRawValue = (value / this.rai) % 1;
         if (hasRawValue) {
           // New more precise toFixed function, but bugs on huge raw numbers

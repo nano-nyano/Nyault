@@ -730,18 +730,14 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
 
     switch (this.selectedAmount.value) {
       default:
-      case 'nano': return this.util.nano.nanoToRaw(value);
-      case 'knano': return this.util.nano.knanoToRaw(value);
-      case 'mnano': return this.util.nano.mnanoToRaw(value);
+      case 'nyano': return this.util.nano.nanoToRaw(value);
     }
   }
 
   getAmountValueFromBase(value) {
     switch (this.selectedAmount.value) {
       default:
-      case 'nano': return this.util.nano.rawToNano(value);
-      case 'knano': return this.util.nano.rawToKnano(value);
-      case 'mnano': return this.util.nano.rawToMnano(value);
+      case 'nyano': return this.util.nano.rawToNano(value);
     }
   }
 
