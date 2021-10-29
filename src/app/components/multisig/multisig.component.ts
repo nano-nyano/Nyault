@@ -133,7 +133,7 @@ export class MultisigComponent implements OnInit {
     if (this.validateMultisig()) {
       this.router.navigate(['account', this.multisigAccount], { queryParams: {sign: 1}});
     } else {
-      this.notificationService.sendWarning('Invalid Nano account!');
+      this.notificationService.sendWarning('Invalid Nyano account!');
     }
   }
 

@@ -141,23 +141,23 @@ export class MusigService {
     for (let address of addresses) {
       address = address.trim();
       if (!address.startsWith('xrb_') && !address.startsWith('nano_')) {
-        throw new Error('Nano addresses must start with xrb_ or nano_');
+        throw new Error('Nyano addresses must start with xrb_ or nano_');
       }
       address = address.split('_', 2)[1];
       try {
         const bytes = base32.decode(address);
         if (bytes.length !== 37) {
-          throw new Error('Wrong nano address length');
+          throw new Error('Wrong nyano address length');
         }
         const pubkey = bytes.subarray(0, 32);
         const checksum_ = this.util.account.getAccountChecksum(pubkey);
         if (!this.util.array.equalArrays(bytes.subarray(32), checksum_)) {
-          throw new Error('Invalid nano address checksum');
+          throw new Error('Invalid nyano address checksum');
         }
         pubkeys.push(pubkey);
       } catch (err_) {
           console.error(err_.toString());
-          throw new Error('Invalid nano address (bad character?)');
+          throw new Error('Invalid nyano address (bad character?)');
       }
     }
     const pubkeyPtrs = this.wasm.musig_malloc(pubkeys.length * 4);
