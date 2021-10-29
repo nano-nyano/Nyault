@@ -12,7 +12,7 @@ import {NotificationService} from '../../services/notification.service';
   styleUrls: ['./converter.component.less']
 })
 export class ConverterComponent implements OnInit, OnDestroy {
-  Mnano = '1';
+  nyano = '1';
   raw = '';
   invalidMnano = false;
   invalidRaw = false;
@@ -29,13 +29,13 @@ export class ConverterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     BigNumber.config({ DECIMAL_PLACES: 21 });
-    this.Mnano = '1';
+    this.nyano = '1';
 
     this.priceSub = this.price.lastPrice$.subscribe(event => {
-      this.fiatPrice = (new BigNumber(this.Mnano)).times(this.price.price.lastPrice).toString();
+      this.fiatPrice = (new BigNumber(this.nyano)).times(this.price.price.lastPrice).toString();
     });
 
-    this.unitChange('mnano');
+    this.unitChange('nyano');
   }
 
   ngOnDestroy() {
@@ -46,10 +46,10 @@ export class ConverterComponent implements OnInit, OnDestroy {
 
   unitChange(unit) {
     switch (unit) {
-      case 'mnano':
-        if (this.util.account.isValidNanoAmount(this.Mnano)) {
-          this.raw = nanocurrency.convert(this.Mnano, {from: nanocurrency.Unit.NANO, to: nanocurrency.Unit.raw});
-          this.fiatPrice = (new BigNumber(this.Mnano)).times(this.price.price.lastPrice).toString(10);
+      case 'nyano':
+        if (this.util.account.isValidNanoAmount(this.nyano)) {
+          this.raw = new BigNumber(this.nyano).shiftedBy(21).toFixed(0);
+          this.fiatPrice = (new BigNumber(this.nyano)).times(this.price.price.lastPrice).toString(10);
           this.invalidMnano = false;
           this.invalidRaw = false;
           this.invalidFiat = false;
@@ -61,26 +61,26 @@ export class ConverterComponent implements OnInit, OnDestroy {
         break;
       case 'raw':
         if (this.util.account.isValidAmount(this.raw)) {
-          this.Mnano = nanocurrency.convert(this.raw, {from: nanocurrency.Unit.raw, to: nanocurrency.Unit.NANO});
-          this.fiatPrice = (new BigNumber(this.Mnano)).times(this.price.price.lastPrice).toString(10);
+          this.nyano = new BigNumber(this.nyano).shiftedBy(-21).toFixed(0);
+          this.fiatPrice = (new BigNumber(this.nyano)).times(this.price.price.lastPrice).toString(10);
           this.invalidRaw = false;
           this.invalidMnano = false;
           this.invalidFiat = false;
         } else {
-          this.Mnano = '';
+          this.nyano = '';
           this.fiatPrice = '';
           this.invalidRaw = true;
         }
         break;
       case 'fiat':
         if (this.util.string.isNumeric(this.fiatPrice)) {
-          this.Mnano = (new BigNumber(this.fiatPrice)).dividedBy(this.price.price.lastPrice).toString(10);
-          this.raw = nanocurrency.convert(this.Mnano, {from: nanocurrency.Unit.NANO, to: nanocurrency.Unit.raw});
+          this.nyano = (new BigNumber(this.fiatPrice)).dividedBy(this.price.price.lastPrice).toString(10);
+          this.raw = new BigNumber(this.nyano).shiftedBy(21).toFixed(0);
           this.invalidRaw = false;
           this.invalidMnano = false;
           this.invalidFiat = false;
         } else {
-          this.Mnano = '';
+          this.nyano = '';
           this.raw = '';
           this.invalidFiat = true;
         }

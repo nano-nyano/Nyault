@@ -34,9 +34,7 @@ export class SendComponent implements OnInit {
   addressBookMatch = '';
 
   amounts = [
-    { name: 'NANO', shortName: 'NANO', value: 'mnano' },
-    { name: 'knano', shortName: 'knano', value: 'knano' },
-    { name: 'nano', shortName: 'nano', value: 'nano' },
+    { name: 'NYANO', shortName: 'NYANO', value: 'nyano' }
   ];
   selectedAmount = this.amounts[0];
 
@@ -299,7 +297,7 @@ export class SendComponent implements OnInit {
       return this.notificationService.sendWarning(`From and to account are required`);
     }
     if (!this.validateAmount()) {
-      return this.notificationService.sendWarning(`Invalid NANO Amount`);
+      return this.notificationService.sendWarning(`Invalid NYANO Amount`);
     }
 
     this.preparingTransaction = true;
@@ -328,7 +326,7 @@ export class SendComponent implements OnInit {
       return this.notificationService.sendWarning(`Amount is invalid`);
     }
     if (from.balanceBN.minus(rawAmount).lessThan(0)) {
-      return this.notificationService.sendError(`From account does not have enough NANO`);
+      return this.notificationService.sendError(`From account does not have enough NYANO`);
     }
 
     // Determine a proper raw amount to show in the UI, if a decimal was entered
