@@ -355,9 +355,9 @@ function setPrefix(account, prefix = 'xrb') {
 /**
  * Conversion functions
  */
-const mnano = 1000000000000000000000000000000;
-const knano = 1000000000000000000000000000;
-const nano  = 1000000000000000000000000;
+const mnano = 1000000000000000000000;
+const knano = 1000000000000000000;
+const nano  = 1000000000000000;
 function mnanoToRaw(value) {
   return new BigNumber(value).times(mnano);
 }
