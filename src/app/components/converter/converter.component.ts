@@ -28,7 +28,7 @@ export class ConverterComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    BigNumber.config({ DECIMAL_PLACES: 21 });
+    BigNumber.config({ DECIMAL_PLACES: 30 });
     this.nyano = '1';
 
     this.priceSub = this.price.lastPrice$.subscribe(event => {
