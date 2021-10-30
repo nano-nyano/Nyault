@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
+import BigNumber from "bignumber.js"
 
 @Injectable()
 export class PriceService {
@@ -25,8 +26,8 @@ export class PriceService {
     }
 
     const quote = response.market_data.current_price;
-    const currencyPrice = quote[currency.toLowerCase()] / 1e9;
-    const btcPrice = quote.btc / 1e9;
+    const currencyPrice = new BigNumber(quote[currency.toLowerCase()]).div(1e9).toFixed();
+    const btcPrice = new BigNumber(quote.btc).div(1e9).toFixed();
 
     this.price.lastPrice = currencyPrice;
     this.price.lastPriceBTC = btcPrice;
