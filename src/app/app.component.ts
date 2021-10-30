@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
 
     await this.walletService.reloadBalances();
 
-    // Workaround fix for github pages when Nyault is refreshed 
+    // Workaround fix for github pages when Nyault is refreshed
     // (or externally linked) and there is a subpath for example to the send screen.
     // This data is saved from the 404.html page
     const path = localStorage.getItem('path');
