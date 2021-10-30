@@ -26,8 +26,8 @@ export class PriceService {
     }
 
     const quote = response.market_data.current_price;
-    const currencyPrice = new BigNumber(quote[currency.toLowerCase()]).div(1e9).toFixed();
-    const btcPrice = new BigNumber(quote.btc).div(1e9).toFixed();
+    const currencyPrice = new BigNumber(quote[currency.toLowerCase()]).div(1e6).toFixed();
+    const btcPrice = new BigNumber(quote.btc).div(1e6).toFixed();
 
     this.price.lastPrice = currencyPrice;
     this.price.lastPriceBTC = btcPrice;
