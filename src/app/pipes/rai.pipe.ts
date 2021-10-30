@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RaiPipe implements PipeTransform {
   precision = 6;
 
-  mrai = 1000000000000000000000;
-  krai = 1000000000000000000;
-  rai  = 1000000000000000;
+  mrai = 1000000000000000000000000;
+  krai = 1000000000000000000000;
+  rai  = 1000000000000000000;
 
   transform(value: any, args?: any): any {
     const opts = args.split(',');

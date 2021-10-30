@@ -48,7 +48,7 @@ export class ConverterComponent implements OnInit, OnDestroy {
     switch (unit) {
       case 'nyano':
         if (this.util.account.isValidNanoAmount(this.nyano)) {
-          this.raw = new BigNumber(this.nyano).shift(21).toFixed(0);
+          this.raw = new BigNumber(this.nyano).shift(24).toFixed(0);
           this.fiatPrice = (new BigNumber(this.nyano)).times(this.price.price.lastPrice).toString(10);
           this.invalidMnano = false;
           this.invalidRaw = false;
@@ -61,7 +61,7 @@ export class ConverterComponent implements OnInit, OnDestroy {
         break;
       case 'raw':
         if (this.util.account.isValidAmount(this.raw)) {
-          this.nyano = new BigNumber(this.nyano).shift(-21).toFixed(0);
+          this.nyano = new BigNumber(this.nyano).shift(-24).toFixed(0);
           this.fiatPrice = (new BigNumber(this.nyano)).times(this.price.price.lastPrice).toString(10);
           this.invalidRaw = false;
           this.invalidMnano = false;
@@ -75,7 +75,7 @@ export class ConverterComponent implements OnInit, OnDestroy {
       case 'fiat':
         if (this.util.string.isNumeric(this.fiatPrice)) {
           this.nyano = (new BigNumber(this.fiatPrice)).dividedBy(this.price.price.lastPrice).toString(10);
-          this.raw = new BigNumber(this.nyano).shift(21).toFixed(0);
+          this.raw = new BigNumber(this.nyano).shift(24).toFixed(0);
           this.invalidRaw = false;
           this.invalidMnano = false;
           this.invalidFiat = false;

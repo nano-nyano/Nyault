@@ -1,5 +1,5 @@
 {
-  "name": "nault",
+  "name": "nyault",
   "version": "1.16.0",
   "license": "MIT",
   "description": "Wallet for interacting with Nano",
@@ -108,9 +108,9 @@
     "zxcvbn3": "^0.1.1"
   },
   "build": {
-    "appId": "cc.nault",
+    "appId": "cc.nyault",
     "buildVersion": "1.0.0",
-    "productName": "Nault",
+    "productName": "Nyault",
     "copyright": "Copyright © 2020 The Nano Community / Andrew Steele",
     "directories": {
       "output": "desktop-app/build",
