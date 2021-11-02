@@ -158,7 +158,7 @@
       "1": "Support for Ledger Nano S / Nano X hardware wallets",
       "2": "Ability to create multi-signature addresses where multiple private keys are required to access and transfer the funds",
       "3": "Ability to sign transactions remotely, allowing you to conduct transactions securely without ever allowing your secret keys to leave your offline device",
-      "nyano-includes": "NyanoWallet includes several options for enhanced security:",
+      "nyanowallet-includes": "NyanoWallet includes several options for enhanced security:",
       "title": "Advanced Security Features"
     },
     "any-device-anywhere": {
