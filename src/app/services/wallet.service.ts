@@ -22,6 +22,7 @@ export interface WalletAccount {
   keyPair: any;
   index: number;
   balance: BigNumber;
+  balanceLocale: string|null;
   pending: BigNumber;
   balanceRaw: BigNumber;
   pendingRaw: BigNumber;
@@ -43,6 +44,7 @@ export interface FullWallet {
   seedBytes: any;
   seed: string|null;
   balance: BigNumber;
+  balanceLocale: string|null;
   pending: BigNumber;
   balanceRaw: BigNumber;
   pendingRaw: BigNumber;
@@ -91,6 +93,7 @@ export class WalletService {
     seedBytes: null,
     seed: '',
     balance: new BigNumber(0),
+    balanceLocale: null,
     pending: new BigNumber(0),
     balanceRaw: new BigNumber(0),
     pendingRaw: new BigNumber(0),
@@ -567,6 +570,7 @@ export class WalletService {
       secret: null,
       keyPair: null,
       balance: new BigNumber(0),
+      balanceLocale: null,
       pending: new BigNumber(0),
       balanceRaw: new BigNumber(0),
       pendingRaw: new BigNumber(0),
@@ -590,6 +594,7 @@ export class WalletService {
       secret: accountBytes,
       keyPair: accountKeyPair,
       balance: new BigNumber(0),
+      balanceLocale: null,
       pending: new BigNumber(0),
       balanceRaw: new BigNumber(0),
       pendingRaw: new BigNumber(0),
@@ -629,6 +634,7 @@ export class WalletService {
     this.wallet.seedBytes = null;
     this.wallet.accounts = [];
     this.wallet.balance = new BigNumber(0);
+    this.wallet.balanceLocale = null;
     this.wallet.pending = new BigNumber(0);
     this.wallet.balanceRaw = new BigNumber(0);
     this.wallet.pendingRaw = new BigNumber(0);
@@ -690,6 +696,7 @@ export class WalletService {
 
   resetBalances() {
     this.wallet.balance = new BigNumber(0);
+    this.wallet.balanceLocale = null;
     this.wallet.pending = new BigNumber(0);
     this.wallet.balanceRaw = new BigNumber(0);
     this.wallet.pendingRaw = new BigNumber(0);
@@ -715,6 +722,7 @@ export class WalletService {
     // const frontierBlocks = await this.api.blocksInfo(allFrontiers.map(f => f.frontier));
 
     let walletBalance = new BigNumber(0);
+    let walletBalanceLocale = null;
     let walletPendingInclUnconfirmed = new BigNumber(0);
     let walletPendingAboveThresholdConfirmed = new BigNumber(0);
 
@@ -734,7 +742,7 @@ export class WalletService {
 
       if (!walletAccount) continue;
 
-      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);
+      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);      
       const accountBalancePendingInclUnconfirmed = new BigNumber(accounts.balances[accountID].pending);
 
       walletAccount.balanceRaw = new BigNumber(walletAccount.balance).mod(this.nano);
@@ -744,6 +752,7 @@ export class WalletService {
       walletAccount.frontier = frontiers.frontiers[accountID] || null;
 
       walletBalance = walletBalance.plus(walletAccount.balance);
+      walletBalanceLocale = walletBalance.toLocaleString();
       walletPendingInclUnconfirmed = walletPendingInclUnconfirmed.plus(accountBalancePendingInclUnconfirmed);
     }
 
@@ -834,6 +843,7 @@ export class WalletService {
     hashes.forEach(hash => this.workPool.addWorkToCache(hash, 1)); // use high pow here since we don't know what tx type will be next
 
     this.wallet.balance = walletBalance;
+    this.wallet.balanceLocale = walletBalance.toLocaleString();
     this.wallet.pending = walletPendingAboveThresholdConfirmed;
 
     this.wallet.balanceRaw = new BigNumber(walletBalance).mod(this.nano);
@@ -864,6 +874,7 @@ export class WalletService {
       secret: null,
       keyPair: null,
       balance: new BigNumber(0),
+      balanceLocale: null,
       pending: new BigNumber(0),
       balanceRaw: new BigNumber(0),
       pendingRaw: new BigNumber(0),
