@@ -753,6 +753,7 @@ export class WalletService {
 
       walletBalance = walletBalance.plus(walletAccount.balance);
       walletBalanceLocale = walletBalance.toLocaleString();
+      console.log('walletBalanceLocale: ', walletBalanceLocale);
       walletPendingInclUnconfirmed = walletPendingInclUnconfirmed.plus(accountBalancePendingInclUnconfirmed);
     }
 
@@ -844,6 +845,7 @@ export class WalletService {
 
     this.wallet.balance = walletBalance;
     this.wallet.balanceLocale = walletBalance.toLocaleString();
+    console.log('this.wallet.balanceLocale: ', this.wallet.balanceLocale);
     this.wallet.pending = walletPendingAboveThresholdConfirmed;
 
     this.wallet.balanceRaw = new BigNumber(walletBalance).mod(this.nano);
