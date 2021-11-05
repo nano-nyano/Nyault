@@ -6,6 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class nyanoToLocalePipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    return Number(value).toLocaleString();
+    return Number(value).toLocaleString("en-US");
   }
 }
