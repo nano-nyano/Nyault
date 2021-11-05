@@ -47,6 +47,6 @@ export class AmountSplitPipe implements PipeTransform {
       return '';
     }
 
-    return ( '.' + fractionalAmount );
+    return ( separator + fractionalAmount );
   }
 }
