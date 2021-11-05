@@ -126,7 +126,7 @@
                       <div class="balance-container primary">
                         <div class="currency-name">NYANO</div>
                         <div class="amount-container">
-                          <div class="amount-locale">{{ (wallet.selectedAccount !== null ? wallet.selectedAccount.balanceLocale : wallet.balanceLocale) | rai: 'nyano,true' | nyanoToLocale }}</div>
+                          <div class="amount-locale">{{ (wallet.selectedAccount !== null ? wallet.balanceLocale : wallet.balanceLocale) | rai: 'nyano,true' | nyanoToLocale }}</div>
                           <!-- <div class="amount-integer">{{ (wallet.selectedAccount !== null ? wallet.selectedAccount.balance : wallet.balance) | rai: 'nyano,true' | amountsplit: 0 }}</div>
                           <div class="amount-fractional">{{ (wallet.selectedAccount !== null ? wallet.selectedAccount.balance : wallet.balance) | rai: 'nyano,true' | amountsplit: 1 }}</div>-->
                           <div class="amount-updating" *ngIf="wallet.updatingBalance && isConfigured()"><div uk-spinner="ratio: 0.5;"></div></div>
