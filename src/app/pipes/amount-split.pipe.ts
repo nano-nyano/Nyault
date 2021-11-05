@@ -28,7 +28,7 @@ let separator = getDecimalSeparator(currentLocale);
 
 export class AmountSplitPipe implements PipeTransform {
   transform(input: string, idx: number): string {
-    const splitAmount = input.split(separator)[idx];
+    const splitAmount = input.split('.')[idx];
 
     if (idx === 0) {
       // Integer
@@ -47,6 +47,6 @@ export class AmountSplitPipe implements PipeTransform {
       return '';
     }
 
-    return ( separator + fractionalAmount );
+    return ( '.' + fractionalAmount );
   }
 }
