@@ -742,7 +742,8 @@ export class WalletService {
 
       if (!walletAccount) continue;
 
-      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);      
+      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);    
+      walletAccount.balanceLocale = walletAccount.balance.toLocaleString();
       const accountBalancePendingInclUnconfirmed = new BigNumber(accounts.balances[accountID].pending);
 
       walletAccount.balanceRaw = new BigNumber(walletAccount.balance).mod(this.nano);
@@ -753,6 +754,8 @@ export class WalletService {
 
       walletBalance = walletBalance.plus(walletAccount.balance);
       walletBalanceLocale = walletBalance.toLocaleString();
+      console.log('walletAccount.balance: ', walletAccount.balance);
+      console.log('walletAccount.balanceLocale: ', walletAccount.balanceLocale);
       console.log('walletBalanceLocale: ', walletBalanceLocale);
       walletPendingInclUnconfirmed = walletPendingInclUnconfirmed.plus(accountBalancePendingInclUnconfirmed);
     }
