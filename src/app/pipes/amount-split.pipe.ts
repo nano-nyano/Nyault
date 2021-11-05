@@ -9,12 +9,14 @@ function getClientLocale() {
     try {
       return Intl.NumberFormat().resolvedOptions().locale;
     } catch (err) {
-      console.error("Cannot get locale from Intl")
+      console.error("Cannot get locale from Intl");
     }
   }
 }
 
-function getDecimalSeparator(getClientLocale()) {
+let currentLocale = getClientLocale();
+
+function getDecimalSeparator(currentLocale) {
     const numberWithDecimalSeparator = 1.1;
     return Intl.NumberFormat(locale)
         .formatToParts(numberWithDecimalSeparator)
@@ -22,9 +24,11 @@ function getDecimalSeparator(getClientLocale()) {
         .value;
 }
 
+let separator = getDecimalSeparator(currentLocale);
+
 export class AmountSplitPipe implements PipeTransform {
   transform(input: string, idx: number): string {
-    const splitAmount = input.split(getDecimalSeparator())[idx];
+    const splitAmount = input.split(separator)[idx];
 
     if (idx === 0) {
       // Integer
