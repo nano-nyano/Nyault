@@ -1,6 +1,6 @@
 {
-  "name": "nyault",
-  "short_name": "nyault",
+  "name": "NyanoWallet",
+  "short_name": "NyanoWallet",
   "theme_color": "#1976d2",
   "background_color": "#1f1f24",
   "display": "standalone",
