@@ -63,9 +63,11 @@
               <div class="balance primary">
                 <span class="incoming-label" *ngIf="account.pending.gt(0)">
                   <span class="text-snippet">{{ 'general.new' | transloco }}</span>
-                  <span class="text-full">+{{ account.pending | rai: 'nyano,true' | amountsplit: 0 }}{{ account.pending | rai: 'nyano,true' | amountsplit: 1 }} NYANO</span>
+                  <span class="text-full">+{{ account.pending | rai: 'nyano,true' | nyanoToLocale | amountsplit: 0 }}{{ account.pending | rai: 'nyano,true' | nyanoToLocale | amountsplit: 1 }} NYANO</span>
+                  <!-- <span class="text-full">+{{ account.pending | rai: 'nyano,true' | amountsplit: 0 }}{{ account.pending | rai: 'nyano,true' | amountsplit: 1 }} NYANO</span> -->
                 </span>
-                {{ account.balance | rai: 'nyano,true' | amountsplit: 0 }}{{ account.balance | rai: 'nyano,true' | amountsplit: 1 }} NYANO
+                {{ account.balance | rai: 'nyano,true' | nyanoToLocale | amountsplit: 0 }}{{ account.balance | rai: 'nyano,true' | nyanoToLocale | amountsplit: 1 }} NYANO
+                <!-- {{ account.balance | rai: 'nyano,true' | amountsplit: 0 }}{{ account.balance | rai: 'nyano,true' | amountsplit: 1 }} NYANO -->
               </div>
               <div class="balance converted">{{ account.balanceFiat | fiat: settings.settings.displayCurrency }}</div>
             </ng-container>
@@ -179,8 +181,10 @@
                       <div class="balance-container primary">
                         <div class="currency-name">NYANO</div>
                         <div class="amount-container">
-                          <div class="amount-integer">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | amountsplit: 0 }}</div>
-                          <div class="amount-fractional">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | amountsplit: 1 }}</div>
+                          <div class="amount-integer">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | nyanoToLocale | amountsplit: 0 }}</div>
+                          <div class="amount-fractional">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | nyanoToLocale | amountsplit: 1 }}</div>
+                          <!-- <div class="amount-integer">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | amountsplit: 0 }}</div>
+                          <div class="amount-fractional">{{ (wallet.selectedAccount ? wallet.selectedAccount.pending : wallet.pending) | rai: 'nyano,true' | amountsplit: 1 }}</div> -->
                         </div>
                       </div>
                       <div class="balance-container converted" *ngIf="settings.settings.displayCurrency">
