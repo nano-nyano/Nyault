@@ -1,9 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'amountsplit'
-})
-
 function getClientLocale() {
   if (typeof Intl !== 'undefined') {
     try {
@@ -25,6 +21,10 @@ function getDecimalSeparator(currentLocale) {
 }
 
 let separator = getDecimalSeparator(currentLocale);
+
+@Pipe({
+  name: 'amountsplit'
+})
 
 export class AmountSplitPipe implements PipeTransform {
   transform(input: string, idx: number): string {
