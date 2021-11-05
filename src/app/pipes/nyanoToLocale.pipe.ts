@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class nyanoToLocalePipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    console.log('typeof: ', typeof value, 'value: ', value, '; value.toLocaleString(): ', value.toLocaleString(), 'typeof: ', typeof value.toLocaleString());
-    return value.toLocaleString();
+    console.log('typeof: ', typeof parseInt(value), 'value: ', value, '; parseInt(value).toLocaleString(): ', parseInt(value).toLocaleString(), 'typeof: ', typeof value.toLocaleString(), '; numValue: ', number(value).toLocaleString());
+    return parseInt(value).toLocaleString();
   }
 }
