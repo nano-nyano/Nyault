@@ -18,7 +18,7 @@ let currentLocale = getClientLocale();
 
 function getDecimalSeparator(currentLocale) {
     const numberWithDecimalSeparator = 1.1;
-    return Intl.NumberFormat(locale)
+    return Intl.NumberFormat(currentLocale)
         .formatToParts(numberWithDecimalSeparator)
         .find(part => part.type === 'decimal')
         .value;
