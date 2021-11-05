@@ -200,8 +200,8 @@
             </ng-template>
             <td class="amount-column uk-text-middle uk-text-muted" [title]="('Incoming Transaction') + ( (pending.amountRaw && (pending.amountRaw > 0) ) ? ( ', +' + ( pending.amountRaw.toString(10) ) + ' raw' ) : '' )">
               <span class="uk-text-small">Ready to receive</span><br>
-              <span class="amount-integer">{{ pending.amount | rai: 'nyano,true' | amountsplit: 0 }}</span>
-              <span class="amount-fractional">{{ pending.amount | rai: 'nyano,true' | amountsplit: 1 }}</span>
+              <span class="amount-integer">{{ pending.amount | rai: 'nyano,true' | nyanoToLocale | amountsplit: 0 }}</span>
+              <span class="amount-fractional">{{ pending.amount | rai: 'nyano,true' | nyanoToLocale | amountsplit: 1 }}</span>
               <span class="currency-name">NYANO</span>
               <div class="compact-actions-date">
                 <ng-template [ngTemplateOutlet]="transactionActions"></ng-template>

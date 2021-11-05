@@ -1,32 +1,32 @@
-# Nyault
+# NyanoWallet
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/jeanouina/Nyault)
 [![GitHub All Releases](https://img.shields.io/github/downloads/jeanouina/Nyault/total)](https://github.com/jeanouina/Nyault/releases/latest)
 [![Discord](https://img.shields.io/badge/discord-join%20chat-orange.svg?logo=discord&color=7289DA)](https://discord.nanocenter.org)
 
-Nyault is a community driven fork of the popular Nano wallet [NanoVault](https://github.com/cronoh/nanovault) 💙
+NyanoWallet is a community driven fork of the popular Nano wallet [NanoVault](https://github.com/cronoh/nanovault) 💙
 
-It's a fully client-side signing wallet for sending and receiving [Nano](https://github.com/nanocurrency/nano-node/) either directly in your browser at [nyault.thomiz.dev](https://nyault.thomiz.dev) or with the [desktop app](https://github.com/jeanouina/Nyault/releases/latest).
+It's a fully client-side signing wallet for sending and receiving [Nano](https://github.com/nanocurrency/nano-node/) either directly in your browser at [nyanowallet.thomiz.dev](https://nyanowallet.thomiz.dev) or with the [desktop app](https://github.com/jeanouina/Nyault/releases/latest).
 
 Seamless integration with any Nano compatible RPC backend/websocket and the aim to be more frequently maintained are some of the main features. Those together will greatly increase the stability, performance and uptime.
 
-![Nyault Screenshot](/src/assets/img/preview.png)
+![NyanoWallet Screenshot](/src/assets/img/preview.png)
 ___
 
 ## How To Use
-Nyault comes in different flavors to suit your need.
+NyanoWallet comes in different flavors to suit your need.
 #### Desktop App
 Available for Windows/Mac/Linux - just head over to the [latest release](https://github.com/jeanouina/Nyault/releases/latest) and download the version for your OS. Arch Linux users may [install it from the (unofficial) AUR](https://aur.archlinux.org/packages/nault-bin/).
 
 If you want to verify the binary checksum there are plenty of apps to do this. One way is using a powershell or bash terminal:
 
-* **Powershell:** `Get-FileHash -Path '.\Nyault-Setup-x.x.x-Windows.exe' -Algorithm SHA256`
-* **Bash:** `openssl sha256 Nyault-x.x.x-Linux.AppImage`
+* **Powershell:** `Get-FileHash -Path '.\NyanoWallet-Setup-x.x.x-Windows.exe' -Algorithm SHA256`
+* **Bash:** `openssl sha256 NyanoWallet-x.x.x-Linux.AppImage`
 
 Then compare the output hash with the one listed in the corresponding checksums file that you download.
 
 #### Web App
-You can also use Nyault from any device on the web at [nyault.thomiz.dev](https://nyault.thomiz.dev).
+You can also use NyanoWallet from any device on the web at [nyanowallet.thomiz.dev](https://nyanowallet.thomiz.dev).
 
 Both the desktop (recommended) and web version supports the Ledger Nano hardware wallet. For help using it, please refer to [this guide](https://docs.nault.cc/2020/08/04/ledger-guide.html).
 
@@ -37,10 +37,10 @@ A full security guide and other useful articles can be found in the [Nault Docs]
 #### Mobile App
 There is no native mobile app but the web wallet contains a Progressive Web App (PWA). That allows you to run it in offline mode for remote-signing.
 
-If you visit [nyault.thomiz.dev](https://nyault.thomiz.dev) in your phone you will be given the option to install it.
+If you visit [nyanowallet.thomiz.dev](https://nyanowallet.thomiz.dev) in your phone you will be given the option to install it.
 
-* Android: Click on "Install Nyault for Android" in the menu
-* iOS (Safari only): 1 - Tap the share button. 2 - Select "+ Add to home screen". 3 - Open Nyault from the home screen
+* Android: Click on "Install NyanoWallet for Android" in the menu
+* iOS (Safari only): 1 - Tap the share button. 2 - Select "+ Add to home screen". 3 - Open NyanoWallet from the home screen
 
 ## How To Help
 
@@ -64,7 +64,7 @@ Special thanks to the following!
 
 ## Donations
 
-If you have found Nyault useful and are feeling generous, you can donate at
+If you have found NyanoWallet useful and are feeling generous, you can donate at
 `nano_33mru1r6bbtows86tud6okhbhsymz4t4c9p3dno6wgoqt8hd6tuqxjhg84jt`
 
 Thanks a lot!

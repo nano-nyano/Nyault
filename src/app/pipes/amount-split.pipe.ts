@@ -1,8 +1,31 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+function getClientLocale() {
+  if (typeof Intl !== 'undefined') {
+    try {
+      return Intl.NumberFormat().resolvedOptions().locale;
+    } catch (err) {
+      console.error("Cannot get locale from Intl");
+    }
+  }
+}
+
+let currentLocale = getClientLocale();
+
+function getDecimalSeparator(currentLocale) {
+    const numberWithDecimalSeparator = 1.1;
+    return Intl.NumberFormat(currentLocale)
+        .formatToParts(numberWithDecimalSeparator)
+        .find(part => part.type === 'decimal')
+        .value;
+}
+
+let separator = getDecimalSeparator(currentLocale);
+
 @Pipe({
   name: 'amountsplit'
 })
+
 export class AmountSplitPipe implements PipeTransform {
   transform(input: string, idx: number): string {
     const splitAmount = input.split('.')[idx];

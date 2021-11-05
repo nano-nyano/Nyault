@@ -4,7 +4,7 @@
 	flex-direction: column;
 	margin: 20px;
 	border-radius: 10px;
-	background: #4E91E0;
+	background: #433654;
 	position: relative;
 	overflow: hidden;
 
@@ -16,11 +16,11 @@
 	}
 
 	&.is-wallet {
-		@wallet-card-background-color: #2F3241;
+		@wallet-card-background-color: #433654;
 		background: @wallet-card-background-color;
 
 		> .logo {
-			filter: hue-rotate(15deg) saturate(0.6) brightness(0.40);
+			filter: hue-rotate(0deg) saturate(1) brightness(1);
 		}
 
 		&::after {
@@ -56,9 +56,9 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: url('../../assets/img/nano-mark.svg');
-		background-size: 170%;
-		background-position: 29% 30%;
+		background: url('../../assets/img/nyanowallet-logo-solo.svg');
+		background-size: 25%;
+		background-position: 100% 180%;
 		background-repeat: no-repeat;
 	}
 
@@ -214,12 +214,12 @@
 		}
 
 		> .currency-name {
-			width: 65px;
+			width: auto;
 			@media (min-width: 1500px) {
-				width: 70px;
+				width: auto;
 			}
 
-			margin-right: 15px;
+			margin-right: .5em;
 			font-weight: 300;
 			text-align: right;
 		}
