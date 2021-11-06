@@ -13,7 +13,7 @@
               <div class="form-account">
                 <select id="form-horizontal-select" class="uk-select" [(ngModel)]="pendingAccountModel" (change)="onSelectedAccountChange(pendingAccountModel)">
                   <option [value]="0">All Accounts</option>
-                  <option *ngFor="let account of accounts" [value]="account.id">{{account.addressBookName ? account.addressBookName + ' - ' : '#' + account.index + ' - ' }} {{ account.id | squeeze }} ({{ account.balance | rai: 'nyano,true' | amountsplit: 0 }}{{ account.balance | rai: 'nyano,true' | amountsplit: 1 }} NYANO)</option>
+                  <option *ngFor="let account of accounts" [value]="account.id">{{account.addressBookName ? account.addressBookName + ' - ' : '#' + account.index + ' - ' }} {{ account.id | squeeze }} ({{ account.balance | rai: 'nyano,true' | nyanoToLocale | amountsplit: 0 }}{{ account.balance | rai: 'nyano,true' | nyanoToLocale | amountsplit: 1 }} NYANO)</option>
                 </select>
               </div>
             </div>
