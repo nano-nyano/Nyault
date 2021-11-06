@@ -23,7 +23,8 @@ const nacl = window['nacl'];
   styleUrls: ['./send.component.css']
 })
 export class SendComponent implements OnInit {
-  nano = 1000000000000000000000000;  // Setting "nano" unit to 10^24, representing nyano as the base unit
+  nano = 1000000000000000000;
+  rawrCutoffAmount = 1000000000000000000000000;  // Setting "nano" unit to 10^24, representing nyano as the base unit
 
   activePanel = 'send';
   sendDestinationType = 'external-address';
@@ -119,7 +120,7 @@ export class SendComponent implements OnInit {
           )
         );
 
-      this.amountExtraRaw = amountAsRaw.mod(this.nano).floor();
+      this.amountExtraRaw = amountAsRaw.mod(this.rawrCutoffAmount).floor();
 
       this.amount =
         this.util.nano.rawToMnano(
@@ -320,7 +321,7 @@ export class SendComponent implements OnInit {
     const rawAmount = this.getAmountBaseValue(this.amount || 0);
     this.rawAmount = rawAmount.plus(this.amountExtraRaw);
 
-    const nanoAmount = this.rawAmount.div(this.nano);
+    const nanoAmount = this.rawAmount.div(this.rawrCutoffAmount);
 
     if (this.amount < 0 || rawAmount.lessThan(0)) {
       return this.notificationService.sendWarning(`Amount is invalid`);
@@ -330,7 +331,7 @@ export class SendComponent implements OnInit {
     }
 
     // Determine a proper raw amount to show in the UI, if a decimal was entered
-    this.amountExtraRaw = this.rawAmount.mod(this.nano);
+    this.amountExtraRaw = this.rawAmount.mod(this.rawrCutoffAmount);
 
     // Determine fiat value of the amount
     this.amountFiat = this.util.nano.rawToMnano(rawAmount).times(this.price.price.lastPrice).toNumber();
