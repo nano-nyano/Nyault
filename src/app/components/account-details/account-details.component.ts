@@ -655,8 +655,8 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     }
     if (!this.util.string.isNumeric(this.amountFiat)) return;
     const rawAmount = this.util.nano.mnanoToRaw(new BigNumber(this.amountFiat).div(this.price.price.lastPrice));
-    const nanoVal = this.util.nano.rawToMnano(rawAmount).floor();
-    const nanoAmount = this.getAmountValueFromBase(this.util.nano.mnanoToRaw(nanoVal)).floor();
+    const nanoVal = this.util.nano.rawToNano(rawAmount).floor();
+    const nanoAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal)).floor();
 
     this.amount = nanoAmount.toNumber();
   }
@@ -721,8 +721,8 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
 
   setMaxAmount() {
     this.amountExtraRaw = this.account.balance ? new BigNumber(this.account.balance).mod(this.rawrCutoffAmount) : new BigNumber(0);
-    const nanoVal = this.util.nano.rawToNano(this.account.balance).floor();
-    const maxAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
+    const nanoVal = this.util.nano.rawToMnano(this.account.balance).floor();
+    const maxAmount = this.getAmountValueFromBase(this.util.nano.mnanoToRaw(nanoVal));
     this.amount = maxAmount.toNumber();
     this.syncFiatPrice();
   }
@@ -731,7 +731,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
 
     switch (this.selectedAmount.value) {
       default:
-      case 'nyano': return this.util.nano.nanoToRaw(value);
+      case 'nyano': return this.util.nano.mnanoToRaw(value);
     }
   }
 
