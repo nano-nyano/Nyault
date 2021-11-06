@@ -80,7 +80,7 @@ import { TranslocoRootModule } from './transloco/transloco-root.module';
     ConfigureWalletComponent,
     NotificationsComponent,
     RaiPipe,
-    nyanoToLocalePipe,
+    nyanoToLocale,
     SqueezePipe,
     AccountsComponent,
     SendComponent,
