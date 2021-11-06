@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('Nyault App', () => {
+describe('NyanoWallet App', () => {
   let page: AppPage;
 
   beforeEach(() => {
