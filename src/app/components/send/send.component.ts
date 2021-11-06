@@ -188,7 +188,7 @@ export class SendComponent implements OnInit {
     const nanoVal = this.util.nano.rawToNano(rawAmount).floor();
     const nanoAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
 
-    this.amount = nanoAmount.toNumber();
+    this.amount = nanoAmount.toNumber().floor();
   }
 
   searchAddressBook() {
