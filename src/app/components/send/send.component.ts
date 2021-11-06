@@ -405,8 +405,8 @@ export class SendComponent implements OnInit {
 
     this.amountExtraRaw = walletAccount.balanceRaw;
 
-    const nanoVal = this.util.nano.rawToNano(walletAccount.balance).floor();
-    const maxAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
+    const nanoVal = this.util.nano.rawToMnano(walletAccount.balance).floor();
+    const maxAmount = this.getAmountValueFromBase(this.util.nano.mnanoToRaw(nanoVal));
     this.amount = maxAmount.toNumber();
     this.syncFiatPrice();
   }
