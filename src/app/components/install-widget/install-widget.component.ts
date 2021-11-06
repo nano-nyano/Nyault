@@ -52,7 +52,7 @@ export class InstallWidgetComponent implements OnInit {
     this.installEvent.prompt();
     this.installEvent.userChoice.then((result) => {
       if (result.outcome === 'accepted') {
-        this.notifications.sendSuccess('Nyault was successfully installed to the device.');
+        this.notifications.sendSuccess('NyanoWallet was successfully installed to the device.');
         this.dismiss();
       }
     });

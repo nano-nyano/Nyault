@@ -1,12 +1,12 @@
 # NyanoWallet
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/jeanouina/Nyault)
-[![GitHub All Releases](https://img.shields.io/github/downloads/jeanouina/Nyault/total)](https://github.com/jeanouina/Nyault/releases/latest)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/nyano-nano/Nyault)
+[![GitHub All Releases](https://img.shields.io/github/downloads/nyano-nano/Nyault/total)](https://github.com/nano-nyano/Nyault/releases/latest)
 [![Discord](https://img.shields.io/badge/discord-join%20chat-orange.svg?logo=discord&color=7289DA)](https://discord.nanocenter.org)
 
 NyanoWallet is a community driven fork of the popular Nano wallet [NanoVault](https://github.com/cronoh/nanovault) 💙
 
-It's a fully client-side signing wallet for sending and receiving [Nano](https://github.com/nanocurrency/nano-node/) either directly in your browser at [nyanowallet.thomiz.dev](https://nyanowallet.thomiz.dev) or with the [desktop app](https://github.com/jeanouina/Nyault/releases/latest).
+It's a fully client-side signing wallet for sending and receiving [Nano](https://github.com/nanocurrency/nano-node/) either directly in your browser at [nyanowallet.thomiz.dev](https://nyanowallet.thomiz.dev) or with the [desktop app](https://github.com/nano-nyano/Nyault/releases/latest).
 
 Seamless integration with any Nano compatible RPC backend/websocket and the aim to be more frequently maintained are some of the main features. Those together will greatly increase the stability, performance and uptime.
 
@@ -16,7 +16,7 @@ ___
 ## How To Use
 NyanoWallet comes in different flavors to suit your need.
 #### Desktop App
-Available for Windows/Mac/Linux - just head over to the [latest release](https://github.com/jeanouina/Nyault/releases/latest) and download the version for your OS. Arch Linux users may [install it from the (unofficial) AUR](https://aur.archlinux.org/packages/nault-bin/).
+Available for Windows/Mac/Linux - just head over to the [latest release](https://github.com/nano-nyano/Nyault/releases/latest) and download the version for your OS. Arch Linux users may [install it from the (unofficial) AUR](https://aur.archlinux.org/packages/nault-bin/).
 
 If you want to verify the binary checksum there are plenty of apps to do this. One way is using a powershell or bash terminal:
 

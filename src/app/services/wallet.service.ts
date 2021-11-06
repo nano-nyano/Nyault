@@ -386,7 +386,7 @@ export class WalletService {
     const exportData = this.generateExportData();
     const base64Data = btoa(JSON.stringify(exportData));
 
-    return `https://nyault.thomiz.dev/import-wallet#${base64Data}`;
+    return `https://nyanowallet.thomiz.dev/import-wallet#${base64Data}`;
   }
 
   lockWallet() {
@@ -736,7 +736,7 @@ export class WalletService {
 
       if (!walletAccount) continue;
 
-      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);    
+      walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);
       const accountBalancePendingInclUnconfirmed = new BigNumber(accounts.balances[accountID].pending);
 
       walletAccount.balanceRaw = new BigNumber(walletAccount.balance).mod(this.rawrCutoffAmount);

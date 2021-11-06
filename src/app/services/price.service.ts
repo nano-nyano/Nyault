@@ -9,10 +9,10 @@ export class PriceService {
   apiUrl = `https://api.coingecko.com/api/v3/coins/nano?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`;
 
   price = {
-    lastPrice: "0",
-    lastPriceBTC: "0",
+    lastPrice: '0',
+    lastPriceBTC: '0',
   };
-  lastPrice$ = new BehaviorSubject("1");
+  lastPrice$ = new BehaviorSubject('1');
 
   constructor(private http: HttpClient) {
     this.loadSavedPrice();

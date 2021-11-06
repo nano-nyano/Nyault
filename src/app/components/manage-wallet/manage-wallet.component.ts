@@ -179,7 +179,7 @@ export class ManageWalletComponent implements OnInit {
       return this.notifications.sendWarning(`Wallet must be unlocked`);
     }
 
-    const fileName = `Nyault-Wallet.json`;
+    const fileName = `NyanoWallet-Wallet.json`;
     const exportData = this.walletService.generateExportData();
     this.triggerFileDownload(fileName, exportData, 'json');
 
@@ -231,7 +231,7 @@ export class ManageWalletComponent implements OnInit {
 
     if (this.invalidCsvCount) {
       if (this.beyondCsvLimit) {
-        return this.notifications.sendWarning(`To export transactions above the limit, please use a custom Nyault server`);
+        return this.notifications.sendWarning(`To export transactions above the limit, please use a custom NyanoWallet server`);
       } else {
         return this.notifications.sendWarning(`Invalid limit`);
       }

@@ -47,7 +47,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
   totalTrackedBalanceRaw = new BigNumber(0);
   totalTrackedBalanceFiat = 0;
   totalTrackedPending = new BigNumber(0);
-  fiatPrice = "0";
+  fiatPrice = '0';
   priceSub = null;
   refreshSub = null;
   statsRefreshEnabled = true;
@@ -366,7 +366,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
   async exportAddressBook() {
     const exportData = this.addressBookService.addressBook;
     const base64Data = btoa(this.toBinary(JSON.stringify(exportData)));
-    const exportUrl = `https://nyault.thomiz.dev/import-address-book#${base64Data}`;
+    const exportUrl = `https://nyanowallet.thomiz.dev/import-address-book#${base64Data}`;
     this.addressBookQRExportUrl = exportUrl;
     this.addressBookShowFileExport = true;
 
@@ -377,7 +377,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   exportAddressBookToFile() {
-    const fileName = `Nyault-AddressBook.json`;
+    const fileName = `NyanoWallet-AddressBook.json`;
 
     const exportData = this.addressBookService.addressBook;
     this.triggerFileDownload(fileName, exportData);
@@ -397,7 +397,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
       try {
         const importData = JSON.parse(fileData);
         if (!importData.length || !importData[0].account) {
-          return this.notificationService.sendError(`Bad import data, make sure you selected a Nyault Address Book export`);
+          return this.notificationService.sendError(`Bad import data, make sure you selected a NyanoWallet Address Book export`);
         }
 
         const encoded = btoa(this.toBinary(JSON.stringify(importData)));
