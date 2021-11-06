@@ -47,7 +47,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
   totalTrackedBalanceRaw = new BigNumber(0);
   totalTrackedBalanceFiat = 0;
   totalTrackedPending = new BigNumber(0);
-  fiatPrice = "0";
+  fiatPrice = '0';
   priceSub = null;
   refreshSub = null;
   statsRefreshEnabled = true;
