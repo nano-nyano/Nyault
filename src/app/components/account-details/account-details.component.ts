@@ -655,8 +655,8 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     }
     if (!this.util.string.isNumeric(this.amountFiat)) return;
     const rawAmount = this.util.nano.mnanoToRaw(new BigNumber(this.amountFiat).div(this.price.price.lastPrice));
-    const nanoVal = this.util.nano.rawToNano(rawAmount).floor();
-    const nanoAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal)).floor();
+    const nanoVal = this.util.nano.rawToMnano(rawAmount).floor();
+    const nanoAmount = this.getAmountValueFromBase(this.util.nano.mnanoToRaw(nanoVal)).floor();
 
     this.amount = nanoAmount.toNumber();
   }
@@ -738,7 +738,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   getAmountValueFromBase(value) {
     switch (this.selectedAmount.value) {
       default:
-      case 'nyano': return this.util.nano.rawToNano(value);
+      case 'nyano': return this.util.nano.rawToMnano(value);
     }
   }
 
