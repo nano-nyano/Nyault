@@ -84,6 +84,8 @@ export interface WalletApiAccount extends BaseApiAccount {
 @Injectable()
 export class WalletService {
   nano = 1000000000000000000;
+  rawrCutoffAmount = 1000000000000000000000000; // Setting "nano" unit to 10^24, representing nyano as the base unit
+  
   storeKey = `nanovault-wallet`;
 
   wallet: FullWallet = {
@@ -247,7 +249,7 @@ export class WalletService {
 
         if (isNewBlock === true) {
           this.wallet.pending = this.wallet.pending.plus(txAmount);
-          this.wallet.pendingRaw = this.wallet.pendingRaw.plus(txAmount.mod(this.nano));
+          this.wallet.pendingRaw = this.wallet.pendingRaw.plus(txAmount.mod(this.rawrCutoffAmount));
           this.wallet.pendingFiat += this.util.nano.rawToMnano(txAmount).times(this.price.price.lastPrice).toNumber();
           this.wallet.hasPending = true;
         }
@@ -737,7 +739,7 @@ export class WalletService {
       walletAccount.balance = new BigNumber(accounts.balances[accountID].balance);    
       const accountBalancePendingInclUnconfirmed = new BigNumber(accounts.balances[accountID].pending);
 
-      walletAccount.balanceRaw = new BigNumber(walletAccount.balance).mod(this.nano);
+      walletAccount.balanceRaw = new BigNumber(walletAccount.balance).mod(this.rawrCutoffAmount);
 
       walletAccount.balanceFiat = this.util.nano.rawToMnano(walletAccount.balance).times(fiatPrice).toNumber();
 
@@ -788,7 +790,7 @@ export class WalletService {
             }
 
             walletAccount.pending = accountPending;
-            walletAccount.pendingRaw = accountPending.mod(this.nano);
+            walletAccount.pendingRaw = accountPending.mod(this.rawrCutoffAmount);
             walletAccount.pendingFiat = this.util.nano.rawToMnano(accountPending).times(fiatPrice).toNumber();
 
             // If there is a pending, it means we want to add to work cache as receive-threshold
@@ -836,8 +838,8 @@ export class WalletService {
     this.wallet.balance = walletBalance;
     this.wallet.pending = walletPendingAboveThresholdConfirmed;
 
-    this.wallet.balanceRaw = new BigNumber(walletBalance).mod(this.nano);
-    this.wallet.pendingRaw = new BigNumber(walletPendingAboveThresholdConfirmed).mod(this.nano);
+    this.wallet.balanceRaw = new BigNumber(walletBalance).mod(this.rawrCutoffAmount);
+    this.wallet.pendingRaw = new BigNumber(walletPendingAboveThresholdConfirmed).mod(this.rawrCutoffAmount);
 
     this.wallet.balanceFiat = this.util.nano.rawToMnano(walletBalance).times(fiatPrice).toNumber();
     this.wallet.pendingFiat = this.util.nano.rawToMnano(walletPendingAboveThresholdConfirmed).times(fiatPrice).toNumber();
