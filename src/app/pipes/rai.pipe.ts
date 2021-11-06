@@ -9,6 +9,7 @@ export class RaiPipe implements PipeTransform {
   mrai = 1000000000000000000000000;
   krai = 1000000000000000000000;
   rai  = 1000000000000000000;
+  rawrAmountCutoff = 1000000000000000000000000;
 
   transform(value: any, args?: any): any {
     const opts = args.split(',');
@@ -19,7 +20,7 @@ export class RaiPipe implements PipeTransform {
       default:
       case 'xrb': return `${(value / this.mrai).toFixed(6)}${!hideText ? ' NYANO' : ''}`;
       case 'nyano':
-        const hasRawValue = (value / this.rai) % 1;
+        const hasRawValue = (value / this.rawrAmountCutoff) % 1;
         if (hasRawValue) {
           // New more precise toFixed function, but bugs on huge raw numbers
           const newVal = value / this.mrai < 0.000001 ? 0 : value / this.mrai;
