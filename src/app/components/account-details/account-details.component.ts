@@ -81,7 +81,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   selectedAmount = this.amounts[0];
 
   amount = null;
-  amountRaw: BigNumber = new BigNumber(0);
+  amountExtraRaw: BigNumber = new BigNumber(0);
   amountFiat: number|null = null;
   rawAmount: BigNumber = new BigNumber(0);
   fromAccount: any = {};
@@ -211,7 +211,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   clearRemoteVars() {
     this.selectedAmount = this.amounts[0];
     this.amount = null;
-    this.amountRaw = new BigNumber(0);
+    this.amountExtraRaw = new BigNumber(0);
     this.amountFiat = null;
     this.rawAmount = new BigNumber(0);
     this.fromAccount = {};
@@ -328,7 +328,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
           this.pendingBlocks.push({
             account: transaction.source,
             amount: transaction.amount,
-            amountRaw: new BigNumber( transaction.amount || 0 ).mod(this.rawrCutoffAmount),
+            amountExtraRaw: new BigNumber( transaction.amount || 0 ).mod(this.rawrCutoffAmount),
             local_timestamp: transaction.local_timestamp,
             local_date_string: (
                 transaction.local_timestamp
@@ -629,7 +629,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   // An update to the Nano amount, sync the fiat value
   syncFiatPrice() {
     if (!this.validateAmount()) return;
-    const rawAmount = this.getAmountBaseValue(this.amount || 0).plus(this.amountRaw);
+    const rawAmount = this.getAmountBaseValue(this.amount || 0).plus(this.amountExtraRaw);
     if (rawAmount.lte(0)) {
       this.amountFiat = 0;
       return;
@@ -720,7 +720,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   }
 
   setMaxAmount() {
-    this.amountRaw = this.account.balance ? new BigNumber(this.account.balance).mod(this.rawrCutoffAmount) : new BigNumber(0);
+    this.amountExtraRaw = this.account.balance ? new BigNumber(this.account.balance).mod(this.rawrCutoffAmount) : new BigNumber(0);
     const nanoVal = this.util.nano.rawToNano(this.account.balance).floor();
     const maxAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
     this.amount = maxAmount.toNumber();
@@ -805,7 +805,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     this.toAccount = to;
 
     const rawAmount = this.getAmountBaseValue(this.amount || 0);
-    this.rawAmount = rawAmount.plus(this.amountRaw);
+    this.rawAmount = rawAmount.plus(this.amountExtraRaw);
 
     const nanoAmount = this.rawAmount.div(this.rawrCutoffAmount);
 
@@ -813,7 +813,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     if (from.balanceBN.minus(rawAmount).lessThan(0)) return this.notifications.sendError(`From account does not have enough NYANO`);
 
     // Determine a proper raw amount to show in the UI, if a decimal was entered
-    this.amountRaw = this.rawAmount.mod(this.rawrCutoffAmount);
+    this.amountExtraRaw = this.rawAmount.mod(this.rawrCutoffAmount);
 
     // Determine fiat value of the amount
     this.amountFiat = this.util.nano.rawToMnano(rawAmount).times(this.price.price.lastPrice).toNumber();
@@ -1014,7 +1014,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   }
 
   resetRaw() {
-    this.amountRaw = new BigNumber(0);
+    this.amountExtraRaw = new BigNumber(0);
   }
 
   // End remote signing methods
