@@ -186,7 +186,7 @@ export class SendComponent implements OnInit {
     if (!this.util.string.isNumeric(this.amountFiat)) return;
     const rawAmount = this.util.nano.mnanoToRaw(new BigNumber(this.amountFiat).div(this.price.price.lastPrice));
     const nanoVal = this.util.nano.rawToNano(rawAmount).floor();
-    const nanoAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
+    const nanoAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal)).floor();
 
     this.amount = nanoAmount.toNumber();
   }
