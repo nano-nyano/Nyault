@@ -13,7 +13,7 @@ import {ConfigureWalletComponent} from './components/configure-wallet/configure-
 import {NotificationService} from './services/notification.service';
 import {NotificationsComponent} from './components/notifications/notifications.component';
 import {RaiPipe} from './pipes/rai.pipe';
-import {NyanoToLocalePipe} from './pipes/nyanoToLocale.pipe';
+import {nyanoToLocalePipe} from './pipes/nyanoToLocale.pipe';
 import {AccountsComponent} from './components/accounts/accounts.component';
 import {ApiService} from './services/api.service';
 import {AddressBookService} from './services/address-book.service';
