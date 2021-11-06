@@ -13,14 +13,14 @@ function getClientLocale() {
 const currentLocale = getClientLocale();
 
 function getDecimalSeparator(currentLocale_arg) {
-    const numberWithDecimalSeparator = 1.1;
-    return Intl.NumberFormat(currentLocale_arg)
-        .formatToParts(numberWithDecimalSeparator)
-        .find(part => part.type === 'decimal')
-        .value;
+  const numberWithDecimalSeparator = 1.1;
+  return Intl.NumberFormat(currentLocale_arg)
+    .formatToParts(numberWithDecimalSeparator)
+    .find(part => part.type === 'decimal')
+    .value;
 }
 
-let separator = getDecimalSeparator(currentLocale);
+const separator = getDecimalSeparator(currentLocale);
 
 @Pipe({
   name: 'amountsplit'
