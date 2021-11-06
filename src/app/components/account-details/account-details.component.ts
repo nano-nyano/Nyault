@@ -25,6 +25,7 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class AccountDetailsComponent implements OnInit, OnDestroy {
   nano = 1000000000000000000;
+  rawrCutoffAmount = 1000000000000000000000000;  // Setting "nano" unit to 10^24, representing nyano as the base unit
   zeroHash = '0000000000000000000000000000000000000000000000000000000000000000';
 
   accountHistory: any[] = [];
@@ -327,7 +328,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
           this.pendingBlocks.push({
             account: transaction.source,
             amount: transaction.amount,
-            amountRaw: new BigNumber( transaction.amount || 0 ).mod(this.nano),
+            amountRaw: new BigNumber( transaction.amount || 0 ).mod(this.rawrCutoffAmount),
             local_timestamp: transaction.local_timestamp,
             local_date_string: (
                 transaction.local_timestamp
@@ -369,8 +370,8 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     }
 
     // Set fiat values?
-    this.account.balanceRaw = new BigNumber(this.account.balance || 0).mod(this.nano);
-    this.account.pendingRaw = new BigNumber(this.account.pending || 0).mod(this.nano);
+    this.account.balanceRaw = new BigNumber(this.account.balance || 0).mod(this.rawrCutoffAmount);
+    this.account.pendingRaw = new BigNumber(this.account.pending || 0).mod(this.rawrCutoffAmount);
     this.account.balanceFiat = this.util.nano.rawToMnano(this.account.balance || 0).times(this.price.price.lastPrice).toNumber();
     this.account.pendingFiat = this.util.nano.rawToMnano(this.account.pending || 0).times(this.price.price.lastPrice).toNumber();
 
@@ -719,7 +720,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   }
 
   setMaxAmount() {
-    this.amountRaw = this.account.balance ? new BigNumber(this.account.balance).mod(this.nano) : new BigNumber(0);
+    this.amountRaw = this.account.balance ? new BigNumber(this.account.balance).mod(this.rawrCutoffAmount) : new BigNumber(0);
     const nanoVal = this.util.nano.rawToNano(this.account.balance).floor();
     const maxAmount = this.getAmountValueFromBase(this.util.nano.nanoToRaw(nanoVal));
     this.amount = maxAmount.toNumber();
@@ -806,13 +807,13 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     const rawAmount = this.getAmountBaseValue(this.amount || 0);
     this.rawAmount = rawAmount.plus(this.amountRaw);
 
-    const nanoAmount = this.rawAmount.div(this.nano);
+    const nanoAmount = this.rawAmount.div(this.rawrCutoffAmount);
 
     if (this.amount < 0 || rawAmount.lessThan(0)) return this.notifications.sendWarning(`Amount is invalid`);
     if (from.balanceBN.minus(rawAmount).lessThan(0)) return this.notifications.sendError(`From account does not have enough NYANO`);
 
     // Determine a proper raw amount to show in the UI, if a decimal was entered
-    this.amountRaw = this.rawAmount.mod(this.nano);
+    this.amountRaw = this.rawAmount.mod(this.rawrCutoffAmount);
 
     // Determine fiat value of the amount
     this.amountFiat = this.util.nano.rawToMnano(rawAmount).times(this.price.price.lastPrice).toNumber();
