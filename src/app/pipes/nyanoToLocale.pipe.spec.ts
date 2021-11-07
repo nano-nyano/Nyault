@@ -1,8 +1,8 @@
-import { nyanoToLocale } from './nyanoToLocale.pipe';
+import { NyanoToLocale } from './nyanoToLocale.pipe';
 
 describe('nyanoToLocale', () => {
   it('create an instance', () => {
-    const pipe = new nyanoToLocale();
+    const pipe = new NyanoToLocale();
     expect(pipe).toBeTruthy();
   });
 });

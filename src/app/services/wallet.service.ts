@@ -85,7 +85,7 @@ export interface WalletApiAccount extends BaseApiAccount {
 export class WalletService {
   nano = 1000000000000000000;
   rawrCutoffAmount = 1000000000000000000000000; // Setting "nano" unit to 10^24, representing nyano as the base unit
-  
+
   storeKey = `nanovault-wallet`;
 
   wallet: FullWallet = {

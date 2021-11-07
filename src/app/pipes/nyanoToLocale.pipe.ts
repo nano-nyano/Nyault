@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'nyanoToLocale'
 })
 
-export class nyanoToLocale implements PipeTransform {
+export class NyanoToLocale implements PipeTransform {
   transform(value: any, args?: any): any {
-    return Number(value).toLocaleString("en-US", {maximumFractionDigits: 0});
+    return Number(value).toLocaleString('en-US', {maximumFractionDigits: 0});
   }
 }
