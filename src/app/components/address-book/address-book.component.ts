@@ -366,7 +366,7 @@ export class AddressBookComponent implements OnInit, AfterViewInit, OnDestroy {
   async exportAddressBook() {
     const exportData = this.addressBookService.addressBook;
     const base64Data = btoa(this.toBinary(JSON.stringify(exportData)));
-    const exportUrl = `https://nyanowallet.thomiz.dev/import-address-book#${base64Data}`;
+    const exportUrl = `https://nyanowallet.com/import-address-book#${base64Data}`;
     this.addressBookQRExportUrl = exportUrl;
     this.addressBookShowFileExport = true;
 

@@ -386,7 +386,7 @@ export class WalletService {
     const exportData = this.generateExportData();
     const base64Data = btoa(JSON.stringify(exportData));
 
-    return `https://nyanowallet.thomiz.dev/import-wallet#${base64Data}`;
+    return `https://nyanowallet.com/import-wallet#${base64Data}`;
   }
 
   lockWallet() {
